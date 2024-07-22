@@ -1,7 +1,7 @@
 import { DateTime } from "luxon";
 import { beforeEach, describe, expect, it } from "vitest";
 
-import { Auction, AuctionClosed } from "./model";
+import { Auction, AuctionClosed, InvalidBid } from "./model";
 
 describe("Auction", () => {
   let goodId: string;
@@ -31,6 +31,27 @@ describe("Auction", () => {
       expect(() => auction.calculateRemainingTime(referenceTime)).toThrowError(
         AuctionClosed,
       );
+    });
+  });
+
+  describe(".placeBid()", () => {
+    it("should add a bid to the auction", () => {
+      const auction = new Auction({ goodId, openingTime, closingTime });
+      auction.placeBid(1000_00n, "bidder@domain.test");
+      expect(auction.bids).toHaveLength(1);
+
+      const bid = auction.bids[0];
+      expect(bid.amount).toBe(1000_00n);
+      expect(bid.bidder).toBe("bidder@domain.test");
+    });
+
+    it("should throw an error if amount is lower than the amount of the highest bid", () => {
+      const auction = new Auction({ goodId, openingTime, closingTime });
+      auction.placeBid(1000_00n, "bidder1@domain.test");
+
+      expect(() =>
+        auction.placeBid(1000_00n, "bidder2@domain.test"),
+      ).toThrowError(InvalidBid);
     });
   });
 });
