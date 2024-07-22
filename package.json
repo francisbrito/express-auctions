@@ -1,0 +1,37 @@
+{
+  "name": "express-auction",
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "Francis Brito <francis@brito.do>",
+  "license": "UNLICENSED",
+  "description": "",
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.11",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.3",
+    "vitest": "^2.0.3"
+  },
+  "engines": {
+    "node": "~20.15.1"
+  },
+  "engineStrict": true,
+  "prettier": {
+    "plugins": [
+      "@trivago/prettier-plugin-sort-imports"
+    ],
+    "importOrder": [
+      "^node:(.*)$",
+      "<THIRD_PARTY_MODULES>",
+      "^[./]"
+    ],
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
