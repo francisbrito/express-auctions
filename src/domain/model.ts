@@ -1,4 +1,5 @@
 import { DateTime, Duration } from "luxon";
+import { ulid } from "ulid";
 
 export class AuctionClosed extends Error {}
 
@@ -9,12 +10,14 @@ export interface AuctionConstructorParameters {
 }
 
 export class Auction {
+  public readonly id: string;
   public readonly goodId: string;
   public readonly openingTime: DateTime;
   public readonly closingTime: DateTime;
   public readonly bids: Bid[];
 
   constructor(parameters: AuctionConstructorParameters) {
+    this.id = ulid();
     this.goodId = parameters.goodId;
     this.openingTime = parameters.openingTime;
     this.closingTime = parameters.closingTime;

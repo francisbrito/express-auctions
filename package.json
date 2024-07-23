@@ -9,6 +9,7 @@
   "description": "",
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/better-sqlite3": "^7.6.11",
     "@types/express": "^4.17.21",
     "@types/luxon": "^3.4.2",
     "@types/node": "^20.14.11",
@@ -26,6 +27,7 @@
     ],
     "importOrder": [
       "^node:(.*)$",
+      "^vitest",
       "<THIRD_PARTY_MODULES>",
       "^[./]"
     ],
@@ -33,7 +35,9 @@
     "importOrderSortSpecifiers": true
   },
   "dependencies": {
+    "better-sqlite3": "^11.1.2",
     "express": "^4.19.2",
-    "luxon": "^3.4.4"
+    "luxon": "^3.4.4",
+    "ulid": "^2.3.0"
   }
 }

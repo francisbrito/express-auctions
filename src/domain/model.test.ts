@@ -1,5 +1,6 @@
-import { DateTime } from "luxon";
 import { beforeEach, describe, expect, it } from "vitest";
+
+import { DateTime } from "luxon";
 
 import { Auction, AuctionClosed, InvalidBid } from "./model";
 
